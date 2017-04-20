@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jQuery Part II</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=792, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+    <!-- Theme docs: https://shwr.me/shower/themes/ribbon/ -->
+    <script src="jquery/2.0.3.js"></script>
+    <script src="jquery/easing.js"></script>
+    <style>
+    .light_blue {
+        color: #a5a9ff !important
+    }
+    .question {
+        color: #ff8868 !important
+    }
+    </style>
+</head>
+
+<body class="shower list">
+    <header class="caption">
+        <h1>jQuery Part II</h1>
+        <p>для Epic Skills</p>
+    </header>
+    <section class="slide white">
+        <img src="pictures/jquery-slogan.png" alt="" class="cover" style="padding: 10%;">
+    </section>
+    <section class="slide">
+        <h2>На <a href="https://gurylev.github.io/keynotes-jquery/index.html">прошлом занятии</a> мы узнали, что</h2>
+        <ul>
+            <li class="next">HTML, CSS и JS комбинируются браузером в DOM-дерево</li>
+            <li class="next">Подключив jQuery, нужно ещё ждать готовности документа</li>
+            <li class="next">Можно обратиться к наборам элементов, искать и фильтровать их</li>
+            <li class="next">Можно показывать/скрывать элементы, стилизовать, менять классы</li>
+            <li class="next">Можно вставлять и удалять элементы</li>
+            <li class="next">Хорошо сохранять значения в переменные</li>
+            <li class="next">Хорошо объединять действия в функции</li>
+            <li class="next">Можно вызывать функции по действиям посетителя</li>
+        </ul>
+    </section>
+
+    <!-- добавить слайд с содержанием текущей презы -->
+
+    <section class="slide shout">
+        <h2 class="place left" style="padding: 10px 20px; font-size: 2.5em;line-height: 1.3em;background-color: rgba(51, 51, 51, 0.9); color: #eee">Вычисляем<br>по селектору</h2>
+        <img src="pictures/selector.jpg" alt="" class="cover cat" style="width: 100%;height: 100%;object-fit: cover;">
+    </section>
+    <section class="slide">
+        <h2><a href="http://api.jquery.com/category/selectors/jquery-selector-extensions/">Фильтрация селекторов по типу</a></h2>
+        <ul>
+            <li class="next"><code>$(':button')</code> - <code>&lt;input type="button"&gt;</code> и <code>&lt;button&gt;</code></li>
+            <li class="next"><code>$(':hidden')</code> - скрытые элементы</li>
+        </ul>
+    </section>
+    <section class="slide black">
+        <p class="place top right" style="text-align: right;color: #eee;padding: 10px 20px; font-size: 1.7em;line-height: 1.3em;">
+        <span>jQuery всегда знает,<br>где скрытые элементы,<br></span>
+        <span class="next">но не может получить<br>размеров и координат</span>
+        </p>
+        <img src="pictures/cat.jpg" class="cover cat">
+    </section>
+    <section class="slide">
+        <h2><a href="http://api.jquery.com/category/selectors/jquery-selector-extensions/">Фильтрация селекторов по типу</a></h2>
+        <ul>
+            <li><code>$(':button')</code> - <code>&lt;input type="button"&gt;</code> и <code>&lt;button&gt;</code></li>
+            <li><code>$(':hidden')</code> - скрытые элементы</li>
+            <li><code>$(':visible')</code> - видимые элементы</li>
+            <li class="next"><code>$(':selected')</code> - выбранные пункты списков</li>
+            <li class="next"><code>$(':parent')</code> - элементы с содержимым</li>
+        </ul>
+    </section>
+    <section class="slide">
+        <h2>Фильтрация селекторов по состоянию</h2>
+        <ul>
+            <li class="next"><code>$(':focus')</code> - элемент с фокусом</li>
+            <li class="next"><code>$(':hover')</code> - элемент под курсором</li>
+        </ul>
+    </section>
+    <section class="slide">
+        <p class="place bottom left" style="margin-left: 15px;padding: 10px 20px; line-height: 1.3em;font-size: 1.4em;background-color: rgba(51, 51, 51, 0.9); color: #eee">jQuery знает, куда ты двигаешь курсор,<span class="next"><br>но только в пределах документа</span></p>
+        <img src="pictures/hover.jpg" class="cover cat" style="width: 100%;height: 100%;object-fit: cover;">
+    </section>
+    <section class="slide">
+        <h2>Фильтрация селекторов по состоянию</h2>
+        <ul>
+            <li><code>$(':focus')</code> - элемент с фокусом</li>
+            <li><code>$(':hover')</code> - элемент под курсором</li>
+            <li><code>$(':checked')</code> - отмеченные элементы</li>
+            <li class="next"><code>$(':disabled')</code> - отключенные элементы</li>
+        </ul>
+    </section>
+    <section class="slide shout">
+        <h2 class="cover shout">Манипулируем</h2>
+    </section>
+    <section class="slide">
+        <h2><a href="http://api.jquery.com/category/manipulation/dom-insertion-inside/">Манипуляции: вставка рядом с элементом</a></h2>
+        <ul>
+            <li class="next"><code>.after('&lt;h1&gt;хм&lt;/h1&gt;')</code> - вставка html после текущего</li>
+            <li class="next"><code>$('&lt;h1&gt;хм&lt;/h1&gt;').insertAfter('.class')</code> - вставка html после указанного</li>
+            <li class="next"><code>.before('&lt;h1&gt;хм&lt;/h1&gt;')</code> - вставка html перед текущим</li>
+            <li class="next"><code>$('&lt;h1&gt;хм&lt;/h1&gt;').insertBefore('.class')</code> - вставка html перед указанным</li>
+        </ul>
+    </section>
+    <section class="slide">
+        <h2><a href="http://api.jquery.com/category/manipulation/copying/">Манипуляции: копирование элемента</a></h2>
+        <p class="next"><code>.clone()</code> - вернёт копию текущего элемента<br>
+        Пример использования:<br>
+        <code>$('.cat').clone().appendTo('.home')</code></p>
+        <span class="question next">Аккуратнее с копированием! Атрибут id у разных элементов не должен повторяться, это не валидно.</span>
+    </section>
+    <section class="slide shout white">
+        <h2 class="place top right" style="padding: 10px 20px; font-size: 4em;line-height: 1.3em;">Получаем значения</h2>
+        <img src="pictures/getting-values.jpg" class="cover cat">
+    </section>
+    <section class="slide">
+        <h2>Значения атрибутов</h2>
+        <p>Возвращают значение только первого элемента коллекции</p>
+        <ul>
+            <li class="next"><code>.attr('type')</code> - получаем значение html-атрибута</li>
+            <li class="next"><code>.attr('type', 'text')</code> - изменяем значение атрибута</li>
+            <li class="next"><code>.attr({'type': 'submit', 'value': 'Отправить'})</code> - изменяем атрибуты</li>
+            <li class="next"><code>.removeAttr('type value')</code> - удаляем атрибуты</li>
+        </ul>
+    </section>
+    <section class="slide">
+        <h2>Значения полей</h2>
+        <p>Возвращают значение только первого элемента коллекции</p>
+        <ul>
+            <li class="next"><code>.val()</code> - аналог <code>.attr('value')</code></li>
+            <li class="next"><code>.val('text')</code> - аналог <code>.attr('value', 'text')</code></li>
+            <li class="next"><code>.prop('checked')</code> - пуолчить состояние чекбокса</li>
+            <li class="next"><code>.prop('checked', true)</code> - изменить состояние чекбокса</li>
+        </ul>
+    </section>
+    <section class="slide">
+        <h2><a href="http://jquery.page2page.ru/index.php5/%D0%A1%D0%BE%D1%85%D1%80%D0%B0%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85">Сохраняем данные</a></h2>
+        <ul>
+            <li class="next"><code>.data()</code> - получить объект со всеми атрибутами, начинающиеся с <mark>data-</mark></li>
+            <li class="next"><code>.data('cat')</code> - получить содержимое атрибута <mark>data-cat</mark></li>
+            <li class="next"><code>.data('cat', 'meeooow')</code> - задать содержимое атрибута <mark>data-cat</mark></li>
+            <li class="next"><code>.data({ 'cat': 'meeooow', dog: 'wooow' })</code> - задать содержимое нескольких data-атрибутов</li>
+            <li class="next"><code>.removeData('cat')</code> - удалить атрибут <mark>data-cat</mark></li>
+            <li class="next"><code>.removeData('cat', 'dog')</code> или <code>.removeData(['cat', 'dog', 'pig'])</code> - удалить набор data-атрибутов</li>
+        </ul>
+    </section>
+    <section class="slide shout black">
+        <h2 class="place top" style="padding: 10px 20px; font-size: 3em;line-height: 1.3em;color: #eee;width: 100%;text-align: center;">Получаем размеры</h2>
+        <img src="pictures/sizes.jpg" alt="" class="cover cat" style="width: 100%;height: 100%;object-fit: cover;">
+    </section>
+    <section class="slide">
+        <h2><a href="http://jquery.page2page.ru/index.php5/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0_%D1%81_%D0%B2%D1%8B%D1%81%D0%BE%D1%82%D0%BE%D0%B9_%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D0%B0">Высота</a></h2>
+        <ul>
+            <li class="next"><code>.height()</code> - получить высоту без учёта <code>padding</code> и <code>border</code><br>в отличии от <code>.css('height')</code> вернёт число без единиц измерения</li>
+            <li class="next"><code>.innerHeight()</code> - получить высоту без учёта <code>border</code></li>
+            <li class="next"><code>.outerHeight()</code> - получить высоту без учёта <code>margin</code></li>
+            <li class="next"><code>.outerHeight(true)</code> - получить высоту с учётом <code>margin</code></li>
+        </ul>
+    </section>
+    <section class="slide white">
+        <h2><img src="pictures/Height.png" alt="" class="cover cat"></h2>
+    </section>
+    <section class="slide">
+        <h2><a href="http://jquery.page2page.ru/index.php5/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0_%D1%81_%D1%88%D0%B8%D1%80%D0%B8%D0%BD%D0%BE%D0%B9_%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D0%B0">Ширина</a></h2>
+        <ul>
+            <li class="next"><code>.width()</code> - получить высоту без учёта <code>padding</code> и <code>border</code><br>в отличии от <code>.css('width')</code> вернёт число без единиц измерения</li>
+            <li class="next"><code>.innerWidth()</code> - получить высоту без учёта <code>border</code></li>
+            <li class="next"><code>.outerWidth()</code> - получить высоту без учёта <code>margin</code></li>
+            <li class="next"><code>.outerWidth(true)</code> - получить высоту с учётом <code>margin</code></li>
+        </ul>
+    </section>
+    <section class="slide white">
+        <h2><img src="pictures/Width.png" alt="" class="cover cat"></h2>
+    </section>
+    <section class="slide">
+        <h2 class="cover shout">Работаем с наборами</h2>
+    </section>
+    <section class="slide">
+        <h2>Обход набора</h2>
+        <p class="next"><code>.each(function(index, node))</code> - применить функцию к каждому элементу набора</p>
+        <code class="next" id="hideCat">$(".cat").height()</code>
+        <pre class="next" id="hideCats">
+            <code>$(".cat").each(function(index, <mark>element</mark>) {</code>
+            <code>&nbsp;&nbsp;$(<mark>this</mark>).height()</code>
+            <code>});</code>
+        </pre>
+        <script>
+            $("#hideCat").on('click', function() {
+                $(this).after(': ' + $(".cat").height())
+            });
+            $('#hideCats').on('click', function() {
+                var $self = $(this);
+                $(".cat").each(function(index, element) {
+                    var divider = index === 0 ? '' : ', ';
+                    $self.after($(this).height() + divider)
+                });
+            });
+        </script>
+    </section>
+
+    <!-- добавить слайд про $.extend -->
+    
+    <section class="slide shout">
+        <p class="place top left" style="margin-left: 15px;margin-top: 15px;padding: 10px 20px; line-height: 1.3em;font-size: 3em;background-color: rgba(51, 51, 51, 0.9); color: #eee">Позиционируем</p>
+        <img src="pictures/position.jpg" class="cover cat" style="object-fit: cover; width: 100%;height: 100%;">
+    </section>
+    <section class="slide">
+        <h2><a href="http://jquery.page2page.ru/index.php5/%D0%9F%D0%BE%D0%B7%D0%B8%D1%86%D0%B8%D1%8F_%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D0%B0">Координаты относительно края страницы</a></h2>
+        <p>Координаты считаются и задаются от левого верхнего угла страницы до левого верхнего угла элемента</p>
+        <ul>
+            <li class="next"><code>.offset()</code> - получить координаты элемента от края страницы<br>вернёт объект, содержащий <mark>left</mark> и <mark>top</mark></li>
+            <li class="next"><code>.offset({ top: 10, left: 30 })</code> - задать координаты</li>
+        </ul>
+        <span class="question next">Указываются только числами, без единиц измерения</span><br>
+        <span class="question next">Нельзя получить координаты скрытых или спрятанных элементов</span>
+    </section>
+    <section class="slide">
+        <h2><a href="http://api.jquery.com/category/offset/">Координаты относительно родителя</a></h2>
+        <p>Координаты считаются и задаются от левого верхнего угла родительского элемента до левого верхнего угла элемента</p>
+        <ul>
+            <li class="next"><code>.position()</code> - получить координаты относительно родителя<br>вернёт объект, содержащий <mark>left</mark> и <mark>top</mark></li>
+            <li class="next"><code>.position({ top: 10, left: 30 })</code> - задать положение</li>
+        </ul>
+        <span class="question next">Указываются только числами, без единиц измерения</span><br>
+        <span class="question next">Нельзя получить координаты скрытых или спрятанных элементов</span>
+    </section>
+    <section class="slide white">
+        <h2><img src="pictures/Position.png" alt="" class="cover cat"></h2>
+    </section>
+    <section class="slide">
+        <h2><a href="http://jquery.page2page.ru/index.php5/%D0%A1%D0%BF%D0%BE%D0%B7%D0%B8%D1%86%D0%B8%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5_%D1%80%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B5_%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D1%8B">Ближайший позиционированный родитель</a></h2>
+        <p class="next"><code>.offsetParent()</code> - получить ближайшего предка с указанным позиционированием (<mark>relative</mark>, <mark>absolute</mark> или <mark>fixed</mark>)</p>
+    </section>
+    <section class="slide">
+        <h2><a href="http://jquery.page2page.ru/index.php5/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0_%D1%81%D0%BE_%D1%81%D0%BA%D1%80%D0%BE%D0%BB%D0%BB%D0%B8%D0%BD%D0%B3%D0%BE%D0%BC_%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2">Прокрученное расстояние</a></h2>
+        <p class="next"><code>.scrollTop()</code> - получить расстояние вертикального скролла</p>
+        <p class="next"><code>.scrollTop(30)</code> - задать расстояние вертикального скролла</p>
+        <p class="next"><code>.scrollLeft()</code> - получить расстояние горизонтального скролла</p>
+        <p class="next"><code>.scrollLeft(40)</code> - задать расстояние горизонтального скролла</p>
+    </section>
+    <section class="slide shout">
+        <h2 class="cover shout">Анимируем</h2>
+    </section>
+    <section class="slide">
+        <div style="width:30%; height:15%; background-color: #a5a9ff; position: absolute; top:35%; left:15%">
+            <p style="color:#fff">прямоугольник</p>
+        </div>
+        <div id="orange" style="width:25%; height:25%; background-color: #ffc40f; position: absolute; bottom:15%; right:15%; opacity: .5"></div>
+        <script>
+        $("#orange").click(function() {
+            $(this).animate({
+                right: "65%",
+                bottom: "55%"
+            }, 5000, "easeOutBounce");
+        });
+        </script>
+    </section>
+    <section class="slide">
+        <p>По-умолчанию <mark>#orange</mark> имеет абсолютное позиционирование,<br><mark>right: 15%</mark> и <mark>bottom: 15%</mark></p>
+        <pre class="next">
+            <code>$("#orange").click(function() {</code>
+            <div class="next">
+                <code>&nbsp;&nbsp;$(this).animate({</code>
+                <div class="next">
+                    <code>&nbsp;&nbsp;&nbsp;&nbsp;right: "65%",</code>
+                    <code>&nbsp;&nbsp;&nbsp;&nbsp;bottom: "55%"</code>
+                </div>
+                <code>&nbsp;&nbsp;}, 5000, "easeOutBounce");</code>
+            </div>
+            <code>});</code>
+        </pre>
+    </section>
+    <section class="slide white" id="magic">
+        <img class="place bottom left cat" src="pictures/$.png" alt="" id="vzhuh" style="width: 30%;left: 10%;bottom: 3%;display: none;transform:rotate(0deg)">
+        <h2 class="light_blue cover shout"><b id="jquery" style="position: absolute; left:50%; top:0;transform: translateY(-50%);">$</b><b id="to_show" style="display: none; position: absolute; left:50%; top:0; width:100%;transform: translateY(-50%);"> == магия</b></h2>
+        <script>
+        $("#magic").hover(
+            function() {
+                $("#jquery").animate({
+                    left: "25%"
+                }, 700);
+                $("#to_show").fadeIn(200).animate({
+                    left: "10%"
+                }, 500);
+                $('#vzhuh').fadeIn(100).animate({
+                    left: "3%"
+                }, 300);
+            },
+            function() {
+                $("#jquery").animate({
+                    left: "50%"
+                }, 700);
+                $("#to_show").animate({
+                    left: "50%"
+                }, 500).fadeOut(200);
+                $('#vzhuh').animate({
+                    left: "10%"
+                }, 200).fadeOut(200);
+            });
+        </script>
+    </section>
+    <section class="slide shout">
+        <h2 class="cover shout">Обрабатываем события</h2>
+    </section>
+    <section class="slide">
+        <h2>Обработчики событий</h2>
+        <p class="next"><code>.on('click', fun)</code> - следить за кликами на элементе и каждый раз вызывать функцию <code>fun</code></p>
+        <p class="next"><code>.one('click', fun)</code> - следить за кликами на элементе, при первом клике вызвать функцию <code>fun</code>, потом удалить обработчик клика</p>
+        <p class="next"><code>.off('click', fun)</code> - удаление обработчика клика с этой функцией</p>
+        
+        <a href="http://jquery.page2page.ru/index.php5/%D0%A1%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D1%8F">Все существующие события</a></p>
+    </section>
+    <section class="slide shout">
+        <h2 class="cover shout">Обрабатываем формы</h2>
+    </section>
+    <section class="slide" id="forms">
+        <h2><a href="http://jquery.page2page.ru/index.php5/%D0%A4%D0%BE%D1%80%D0%BC%D1%8B">Собираем данные с формы</a></h2>
+        <p><code>.serialize()</code> - вернёт GET-значение, собранное из данных формы<br>
+        <form action="index2.html#forms" id="test-form-get">
+            <span>GET-form</span><br>
+            <label for="cat">cat: </label><input type="text" id="cat" name="cat">
+            <label for="dog">dog: </label><input type="text" id="dog" name="dog">
+            <input type="submit">
+        </form>
+        <form action="index2.html#forms" id="test-form2">
+            <span>Blocked-form (write serialize)</span><br>
+            <label for="cat2">cat: </label><input type="text" id="cat2" name="cat">
+            <label for="dog2">dog: </label><input type="text" id="dog2" name="dog">
+            <input type="submit">
+        </form>
+        <form action="index2.html#forms" id="test-form3">
+            <span>Ajax-sended form</span><br>
+            <label for="cat3">cat: </label><input type="text" id="cat3" name="cat">
+            <label for="dog3">dog: </label><input type="text" id="dog3" name="dog">
+            <input type="submit">
+        </form>
+        <script>
+            $('#test-form2').on('submit', function(event) {
+                event.preventDefault();
+                $(this).after($(this).serialize());
+            });
+            $('#test-form3').on('submit', function(event) {
+                event.preventDefault();
+
+                $.ajax({
+                    url: "http://httpbin.org/get",
+                    data: $(this).serialize(),
+                }).done(function (data) {
+                    console.log(data);
+                }).fail(function (data) {
+                    console.log(data);
+                }).always(function (data) {
+                    console.log(data);
+                });
+            });
+        </script>
+    </section>
+
+    <section class="slide">
+        <h2><a href="http://jquery.page2page.ru/index.php5/Ajax-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81">Отправка ajax при отправке формы</a></h2>
+        <p class="next"><code>$.ajax()</code> - способ обмена данными без обновления страницы</p>
+        <pre class="next">
+            <code>$('#test-form3').on('submit', function(event) {</code>
+            <div class="next">
+                <code>&nbsp;&nbsp;event.preventDefault();</code>
+                <div class="next">
+                    <code>&nbsp;&nbsp;&nbsp;&nbsp;$.ajax({...});</code>
+                </div>
+            </div>
+            <code>});</code>
+        </pre>
+    </section>
+    <section class="slide">
+        <h2>Пример ajax-запроса</h2>
+        <pre class="next">
+            <code>$.ajax({</code>
+            <code>&nbsp;&nbsp;url: "http://httpbin.org/get",</code>
+            <code>&nbsp;&nbsp;dataType: 'html',</code>
+            <code>&nbsp;&nbsp;data: $(this).serialize()</code>
+            <code>})</code>
+        </pre>
+    </section>
+    <section class="slide">
+        <h2>События ajax-запросов</h2>
+        <pre class="next">
+            <code>$.ajax({...})</code>
+            <code>&nbsp;&nbsp;.done(function(context) { alert("success") })</code>
+            <code>&nbsp;&nbsp;.fail(function(context) { alert("success") })</code>
+            <code>&nbsp;&nbsp;.always(function(context) { alert("success") })</code>
+        </pre>
+        <span class="next"><a href="http://jquery.page2page.ru/index.php5/Ajax">Подробнее про ajax</a></span>
+    </section>
+    <div class="progress"></div>
+    <script src="shower/shower.min.js"></script>
+</body>
+
+</html>
