@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>jQuery Part II</title>
     <meta charset="utf-8">
@@ -19,7 +18,9 @@
     }
     </style>
 </head>
-
+<!-- Based on https://github.com/misha-panyushkin/js_learning -->
+<!-- Сделать вместе на базе предыдущего занятия модальное окно и бургер -->
+<!-- Показать, как делается слайдер, таймер обратного отсчёта, фото-галерея, параллакс -->
 <body class="shower list">
     <header class="caption">
         <h1>jQuery Part II</h1>
@@ -41,9 +42,6 @@
             <li class="next">Можно вызывать функции по действиям посетителя</li>
         </ul>
     </section>
-
-    <!-- добавить слайд с содержанием текущей презы -->
-
     <section class="slide shout">
         <h2 class="place left" style="padding: 10px 20px; font-size: 2.5em;line-height: 1.3em;background-color: rgba(51, 51, 51, 0.9); color: #eee">Вычисляем<br>по селектору</h2>
         <img src="pictures/selector.jpg" alt="" class="cover cat" style="width: 100%;height: 100%;object-fit: cover;">
@@ -357,7 +355,6 @@
             });
         </script>
     </section>
-
     <section class="slide">
         <h2><a href="http://jquery.page2page.ru/index.php5/Ajax-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81">Отправка ajax при отправке формы</a></h2>
         <p class="next"><code>$.ajax()</code> - способ обмена данными без обновления страницы</p>
@@ -392,8 +389,14 @@
         </pre>
         <span class="next"><a href="http://jquery.page2page.ru/index.php5/Ajax">Подробнее про ajax</a></span>
     </section>
+    <!-- добавить слайд про $.extend -->
+    <!-- добавить слайд про более подробную обработку событий (документа (все записи ready, разница между load и ready), браузера (ресайз, скролл), форм, клавиатуры, мышки) -->
+    <!-- добавить слайд, уточняющий, что содержится в event http://api.jquery.com/category/events/event-object/ -->
+    <!-- рассказать про throttle и debounce -->
+    <!-- рассказать про scrollTo -->
+    <!-- добавить слайд про one вместо on, про trigger -->
+    <!-- добавить слайды про работу с формами (фокус, сериализация, отправка) http://api.jquery.com/category/forms/ -->
     <div class="progress"></div>
     <script src="shower/shower.min.js"></script>
 </body>
-
 </html>
