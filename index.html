@@ -38,6 +38,18 @@
     .place {
         z-index: -1;
     }
+    .place.top.wide,
+    .place.bottom.wide {
+        width: 100%;
+        text-align: center;
+    }
+    .place.right.wide,
+    .place.left.wide {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
     
     .light_blue {
         color: #a5a9ff !important
@@ -45,6 +57,33 @@
     
     .question {
         color: #ff8868 !important
+    }
+    .qr {
+        top: 50px;
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        color: #fff;
+    }
+    .qr__text {
+        display: block;
+    }
+    .qr__link {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        right: 0;
+        display: block;
+        font-size: 30px;
+        line-height: 1.2em;
+        margin-bottom: 10px;
+        background: none !important;
+        color: inherit !important;
+    }
+    .qr__image {
+        width: 500px;
+        padding: 10px;
+        background-color: #fff;
     }
     </style>
 </head>
@@ -56,16 +95,24 @@
         <h1>jQuery Part I</h1>
         <p>для Epic Skills</p>
     </header>
+    <section class="slide black">
+        <div class="place">
+            <div class="qr">
+                <a href="http://grlv.ru/l/intro" class="qr__link"><span class="qr__text">Эта презентация: </span>html.git-epixx.ru/jquery</a>
+                <img src="pictures/qrcode.svg" alt="QR-code" class="qr__image">
+            </div>
+        </div>
+    </section>
     <section class="slide white step">
         <h2 style="color:#061fa7; text-shadow:1px 1px 15px #fff; font-size: 3.5em"><b>Javascript</b></h2>
         <p style="color:#062194; text-shadow:1px 1px 15px #fff; font-size: 1.1em; font-weight: bold; padding: 120px 10px 0 0">Море возможностей</p>
         <img src="pictures/intro-js.jpg" alt="" class="place top left">
     </section>
     <section class="slide">
-        <h2 class="shout"><strong>Использовать</strong><i class="next">,</i> <em>нельзя</em> <strong>игнорировать</strong></h2>
+        <h2 class="shout"><strong>Использовать</strong><i class="next">,</i> нельзя <strong>игнорировать</strong></h2>
     </section>
     <section class="slide white">
-        <h2 style="color:#fff">Самое удобные и частоиспользуемые методы собираются в <b style="color:#061fa7; text-shadow:1px 1px 15px #fff; font-size: 1.2em">библиотеках</b></h2>
+        <h2 style="color:#fff" class="next">Самое удобные и частоиспользуемые методы собираются в <b style="color:#061fa7; text-shadow:1px 1px 15px #fff; font-size: 1.2em">библиотеках</b></h2>
         <img src="pictures/full_of_opportunities.jpg" class="cover">
     </section>
     <section class="slide white">
@@ -73,8 +120,7 @@
         <img src="pictures/what_to_choose.jpg" class="cover">
     </section>
     <section class="slide white">
-        <h2>Проблема выбора?</h2>
-        <img src="pictures/js_frameworks.jpg" style="padding: 0 0 0 130px">
+        <img src="pictures/js_frameworks.jpg" class="place center">
     </section>
     <section class="slide white">
         <h2 style="color:#061fa7; text-shadow:1px 1px 15px #fff; font-size: 2.4em; position: absolute; bottom: 40px; left:115px">jQuery</h2>
@@ -92,7 +138,11 @@
         </ul>
     </section>
     <section class="slide">
-        <h2 class="shout">кажется, это сложно</h2>
+        <h2 class="shout">возможно, вам кажется, это сложно?</h2>
+    </section>
+    <section class="slide white">
+        <h2 class="shout next" style="color: #fff; text-shadow: 4px 4px 10px #000">А сейчас?</h2>
+        <img src="pictures/many-jquery.png" alt="" class="cover">
     </section>
     <section class="slide white">
         <h2>Не беспокойтесь!</h2>
@@ -136,16 +186,16 @@
     <section class="slide shout">
         <h2 class="shout light_blue">Пример:<br>$(".example")</h2>
     </section>
-    <section class="slide">
+    <section class="slide white">
         <img src="pictures/intro.jpg" alt="main image" class="cover">
     </section>
-    <section class="slide">
+    <section class="slide white">
         <img src="pictures/html.jpg" class="cover">
     </section>
-    <section class="slide">
+    <section class="slide white">
         <img src="pictures/css.jpg" class="cover">
     </section>
-    <section class="slide">
+    <section class="slide white">
         <img src="pictures/jquery.jpg" class="cover">
     </section>
     <section class="slide white" id="magic">
@@ -216,13 +266,9 @@
             <code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;head&gt;..&lt;/head&gt;</code>
 
             <code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;</code>
-            <code class="next">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script <mark class="important">src</mark>="<b class="light_blue">jquery.js</b>"&gt;&lt;/script&gt;</code>
-
-            <code class="next" style="color:#2ed510">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<mark>script</mark>&gt;</code>
-
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b class="next light_blue">// Место для использования магии.</b>
-
-            <code class="next" style="color:#2ed510">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<mark>script</mark>&gt;</code>
+            <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- вёрстка --&gt;</code>
+            <code class="next">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script <mark>src</mark>="<b class="light_blue">jquery.js</b>"&gt;&lt;/script&gt;</code>
+            <code class="next">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script src="<b class="light_blue">main.js</b>"&gt;&lt;/script&gt;</code>
             <code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/body&gt;</code>
 
             <code>&nbsp;&nbsp;&lt;/<b>html</b>&gt;</code>
@@ -232,7 +278,7 @@
         <h2 class="shout light_blue">...всего лишь дунуть и <span class="next">произойдёт чудо</span></h2>
     </section>
     <section class="slide">
-        <h2 class="shout light_blue">Постой, всему свое время</h2>
+        <h2 class="shout light_blue">Постойте, всему свое время</h2>
         <p class="next light_blue">...и магии тоже!</p>
     </section>
     <section class="slide">
@@ -243,14 +289,30 @@
         </pre>
         <p class="question"><b class="next">Но почему работает только так?</b></p>
     </section>
-    <section class="slide">
-        <h2 class="shout">Дожидайся<br>готовности<br>страницы</h2>
+    <section class="slide black">
+        <img src="pictures/ready.jpg" class="cover">
+        <h2 class="place bottom center wide" style="color:#fff;">Дожидайтесь<br>готовности<br>страницы</h2>
     </section>
     <section class="slide">
         <img src="pictures/css.jpg" class="cover">
     </section>
     <section class="slide">
         <img src="pictures/RDOMNodes.jpg" class="cover">
+    </section>
+    <section class="slide">
+        <h2 class="shout">Осознавайте действия!</h2>
+    </section>
+    <section class="slide">
+        <pre>
+            <code>Магия -> <mark>$</mark></code>
+            <code class="next">Найди пожалуйста документ -> <mark>document</mark></code>
+            <code class="next">А знаешь что, магия, приготовься сделать еще кое-что -> <mark>.</mark></code>
+            <code class="next">Дождись, пока то, что ты нашла </br>завершит свое построение -> <mark>ready</mark></code>
+            <code class="next">Как только этот момент настанет, </br>выполни следующие инструкции -> <mark>function () { .. }</mark></code>
+            <code class="next">На этом, магия, ты можешь быть свободна. Благодарю! -> <mark>;</mark></code>
+            </br>
+            <p class="next"><code><mark>$(document).ready(function () { .. });</mark></code></p>
+        </pre>
     </section>
     <section class="slide">
         <code>$</code>
@@ -271,46 +333,14 @@
         <em class="next">;</em>
     </section>
     <section class="slide">
-        <h2 class="shout">Осознавай действия!</h2>
-    </section>
-    <section class="slide">
-        <pre>
-            <code>Магия -> <mark>$</mark></code>
-            <code class="next">Найди пожалуйста документ -> <mark>document</mark></code>
-            <code class="next">А знаешь что, магия, приготовься сделать еще кое-что -> <mark>.</mark></code>
-            <code class="next">Дождись, пока то, что ты нашла </br>завершит свое построение -> <mark>ready</mark></code>
-            <code class="next">Как только этот момент настанет, </br>выполни следующие инструкции -> <mark>function () { .. }</mark></code>
-            <code class="next">На этом, магия, ты можешь быть свободна. Благодарю! -> <mark>;</mark></code>
-            </br>
-            <p class="next"><code><mark>$(document).ready(function () { .. });</mark></code></p>
-        </pre>
-    </section>
-    <section class="slide">
         <h2 class="shout light_blue">Вежливость - <b class="next">залог успеха.</b></h2>
         <p class="next light_blue">...не только в программировании.</p>
-    </section>
-    <section class="slide">
-        <h2 style="color:#fff" class="shout">Тренировка!</h2>
-        <img src="pictures/training.jpg" class="cover">
-    </section>
-    <section class="slide">
-        <h2 class="shout"><a href="http://jsbin.com/">jsbin.com</a></h2>
-    </section>
-    <section class="slide">
-        <pre>
-            <code>Магия -> <mark>$</mark></code>
-            <code class="next">Найди пожалуйста все code элементы, </br>у родителя с классом "active" -> <mark>".active code"</mark></code>
-            <code class="next">А после этого, пусть все они исчезнут быстро, </br>ага -> <mark>.slideUp("fast")</mark></code>
-            <code class="next">После этого, </br>поменяй цвет текста  -> <mark>.css("color", "#187fff")</mark></code>
-            <code class="next">А после, покажи их за 3 секунды -> <mark>.fadeIn(3000)</mark></code>
-            <code class="next">На этом, магия, ты можешь быть свободна. Благодарю! -> <mark>;</mark></code>
-        </pre>
     </section>
     <section class="slide">
         <h2 class="shout">Нам нужно больше золота!</h2>
     </section>
     <section class="slide">
-        <h2 class="shout">Обращайся к селекторам</h2>
+        <h2 class="shout">Обращайтесь к селекторам</h2>
     </section>
     <section class="slide">
         <h2><a href="http://api.jquery.com/category/selectors/basic-css-selectors/">Базовые селекторы: коллекции</a></h2>
@@ -347,10 +377,10 @@
         </ul>
     </section>
     <section class="slide">
-        <h2 class="shout">Делай с ними<br>что хочешь</h2>
+        <h2 class="shout">Делайте с ними<br>что хотите</h2>
     </section>
     <section class="slide">
-        <h2>Прячь и показывай</h2>
+        <h2>Прячьте и показывайте</h2>
         <ul>
             <li><a href="http://api.jquery.com/category/effects/basics/">Базовые</a>: <code>.show()</code>, <code>.hide()</code>, <code>.toggle()</code>
                 <br>функции отображения/скрытия</li>
@@ -362,16 +392,16 @@
         <p>Пример: <code>$('.class').hide()</code></p>
     </section>
     <section class="slide">
-        <h2>Манипулируй</h2>
+        <h2>Манипулируйте</h2>
         <ul>
             <li class="next"><code>.html('&lt;h1&gt;хм&lt;/h1&gt;')</code> - замена html внутри текущего элемента</li>
             <li class="next"><code>.text('текст')</code> - изменение содержимого с экранированием</li>
-            <li class="next"><code>.remove()</code> - удаляем текущий html-элемент</li>
-            <li class="next"><code>.empty()</code> - удаляем содержимое текущего html-элемента</li>
+            <li class="next"><code>.remove()</code> - удаление текущего html-элемент</li>
+            <li class="next"><code>.empty()</code> - удаление содержимого текущего html-элемента</li>
         </ul>
     </section>
     <section class="slide">
-        <h2><a href="http://api.jquery.com/category/manipulation/dom-insertion-inside/">Помещай в элемент</a></h2>
+        <h2><a href="http://api.jquery.com/category/manipulation/dom-insertion-inside/">Помещайте в элемент</a></h2>
         <ul>
             <li class="next"><code>.append('&lt;h1&gt;хм&lt;/h1&gt;')</code> - вставка html в конец текущего</li>
             <li class="next"><code>$('&lt;h1&gt;хм&lt;/h1&gt;').appendTo('.class')</code> - вставка html в конец указанного</li>
@@ -380,50 +410,57 @@
         </ul>
     </section>
     <section class="slide">
-        <h2>Стилизуй на лету</h2>
+        <h2>Стилизуйте на лету</h2>
         <ul>
-            <li class="next"><code>.css('color')</code> - получаем css-свойство</li>
-            <li class="next"><code>.css('color', 'red')</code> - применяем css-свойство
+            <li class="next"><code>.css('color')</code> - получение css-свойства</li>
+            <li class="next"><code>.css('color', 'red')</code> - применение css-свойства
                 <br>по сути аналог <code>.attr('style', 'color: red')</code></li>
             <li class="next"><code>.css({'color': 'red', 'background-color': 'blue'})</code> - массовое изменение значений css-свойств</li>
-            <li class="next"><code>.width()</code> и <code>.height()</code> - полученаем размеры
+            <li class="next"><code>.width()</code> и <code>.height()</code> - получение размеров
             </li>
         </ul>
     </section>
     <section class="slide">
-        <h2>Изменяй классы</h2>
+        <h2>Изменяйте классы</h2>
         <ul>
-            <li class="next"><code>.addClass('btn')</code> - добавляем класс btn</li>
-            <li class="next"><code>.hasClass('btn')</code> - проверяем наличие класса btn</li>
-            <li class="next"><code>.removeClass('btn')</code> - удаляем класс btn</li>
-            <li class="next"><code>.toggleClass('btn')</code> - добавляем класс btn, если его нет. удаляем, если есть</li>
+            <li class="next"><code>.addClass('btn')</code> - добавление класса btn</li>
+            <li class="next"><code>.hasClass('btn')</code> - проверка наличия класса btn</li>
+            <li class="next"><code>.removeClass('btn')</code> - удаление класса btn</li>
+            <li class="next"><code>.toggleClass('btn')</code> - добавление класса btn, если его нет. удаление, если есть</li>
             </li>
         </ul>
+    </section>
+    <section class="slide">
+        <h2 style="color:#fff;text-shadow: 4px 4px 10px #000" class="shout">Тренировка!</h2>
+        <img src="pictures/training.jpg" class="cover">
+    </section>
+    <section class="slide">
+        <h2 class="shout"><a href="http://do-epixx.ru/">do-epixx.ru</a></h2>
     </section>
     <section class="slide">
         <h2 class="shout">Немного<br>базового JavaScript</h2>
     </section>
     <section class="slide">
-        <h2>Выводи текст</h2>
+        <h2>Выводите текст</h2>
         <p class="next"><code>document.write("Привет, я текст!")</code> - на страницу</p>
         <p class="next"><code>console.log("Привет, я текст!")</code> - в консоль</p>
         <p class="next"><code>alert("Привет, я текст!")</code> - в консоль</p>
     </section>
     <section class="slide">
-        <h2>Сохраняй значения в переменные</h2>
+        <h2>Сохраняйте значения в переменные</h2>
         <p><code>var a = 200;</code>
             <br><code>var b = 300;</code></p>
         <p><code>document.write(a+b);</code></p>
     </section>
     <section class="slide">
-        <h2>Сохраняй данные в переменные</h2>
+        <h2>Сохраняйте данные в переменные</h2>
         <p><code class="next">var input =  $("input")</code>
             <br>
             <code class="next">var value =  input.val()</code></p>
         <p><code class="next">document.write(value);</code></p>
     </section>
     <section class="slide">
-        <h2>Объединяй в функции</h2>
+        <h2>Объединяйте в функции</h2>
         <pre>
             <code>function <mark>multiprint</mark>(<mark class="important">text</mark>){</code>
 
@@ -437,7 +474,7 @@
         </pre>
     </section>
     <section class="slide">
-        <h2>Реагируй на события</h2>
+        <h2>Реагируйте на события</h2>
         <pre>
             <code>$(".button").on("click", function(){</code>
             
@@ -460,12 +497,12 @@
         </pre>
     </section>
     <section class="slide">
-        <h2 class="shout">Будь терпелив</h2>
+        <h2 class="shout">Будьте<br>терпеливы</h2>
     </section>
     <section class="slide">
         <code>.ready()</code> <code>.hide()</code> <code>.show()</code> <code>.slideUp()</code> <code>.fadeIn()</code>
-        <h2 class="next">Дождись их выполнения ..</h2>
-        <p class="next">.. и продолжай действия.</p>
+        <h2 class="next">Дождитесь их выполнения ..</h2>
+        <p class="next">...и продолжайте действия.</p>
         <code class="next">.ready(function () { .. })</code>
         </br>
         <code class="next">.hide("fast", function () { .. })</code>
@@ -473,15 +510,23 @@
         <code class="next">.fadeIn(3000, function () { .. })</code>
     </section>
     <section class="slide">
-        <h2 class="shout light_blue">будь смелым</h2>
+        <h2 class="shout light_blue">будьте смелым</h2>
         <p class="light_blue next">разработчиком!</p>
     </section>
     <section class="slide">
         <h2 class="shout light_blue">и</h2>
     </section>
-    <section class="slide">
-        <h2 class="shout" style="color: #fff; text-shadow:  1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;">делай домашку!</h2>
+    <section class="slide black">
+        <h2 class="shout" style="color: #fff; text-shadow:  1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;">делайте домашку!</h2>
         <img src="pictures/homework.jpg " class="cover">
+    </section>
+    <section class="slide black">
+        <div class="place">
+            <div class="qr">
+                <a href="http://grlv.ru/l/intro" class="qr__link"><span class="qr__text">Эта презентация: </span>html.git-epixx.ru/jquery</a>
+                <img src="pictures/qrcode.svg" alt="QR-code" class="qr__image">
+            </div>
+        </div>
     </section>
     <div class="progress"></div>
     <script src="shower/shower.min.js"></script>
