@@ -21,6 +21,7 @@
 <!-- Based on https://github.com/misha-panyushkin/js_learning -->
 <!-- Сделать вместе на базе предыдущего занятия модальное окно и бургер -->
 <!-- Показать, как делается слайдер, таймер обратного отсчёта, фото-галерея, параллакс -->
+
 <body class="shower list">
     <header class="caption">
         <h1>jQuery Part II</h1>
@@ -270,6 +271,7 @@
             </div>
             <code>});</code>
         </pre>
+        <p class="next"><a href="http://easings.net/ru">Функции плавности</a></p>
     </section>
     <section class="slide white" id="magic">
         <img class="place bottom left cat" src="pictures/$.png" alt="" id="vzhuh" style="width: 30%;left: 10%;bottom: 3%;display: none;transform:rotate(0deg)">
@@ -310,6 +312,11 @@
         <p class="next"><code>.off('click', fun)</code> - удаление обработчика клика с этой функцией</p>
         
         <a href="http://jquery.page2page.ru/index.php5/%D0%A1%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D1%8F">Все существующие события</a></p>
+    </section>
+    <section class="slide">
+        <h2>Обработчики не созданных эл-тов</h2>
+        <p class="next">Можно обработать в том числе на ещё не появившиеся элементы</p>
+        <p class="next"><code>$(document).one('click', '.modal', func)</code> - следить за кликами на всём документе. Каждый раз проверять, произошёл ли клик на элементе с классом <code>modal</code>. Если да, то вызывать функцию <code>funс</code></p>
     </section>
     <section class="slide shout">
         <h2 class="cover shout">Обрабатываем формы</h2>
@@ -389,6 +396,36 @@
             <code>&nbsp;&nbsp;.always(function(context) { alert("success") })</code>
         </pre>
         <span class="next"><a href="http://jquery.page2page.ru/index.php5/Ajax">Подробнее про ajax</a></span>
+    </section>
+    <section class="slide shout">
+        <h2 class="cover shout">jQuery плагины</h2>
+    </section>
+    <section class="slide">
+        <h2>Слайдеры</h2>
+        <h2 class="shout next"><a href="https://kenwheeler.github.io/slick/">Slick</a></h2>
+    </section>
+    <section class="slide">
+        <h2>Слайдеры</h2>
+        <h2 class="shout next"><a href="https://owlcarousel2.github.io/OwlCarousel2/">Owl Carousel 2</a></h2>
+    </section>
+    <section class="slide">
+        <h2 class="shout next"><a href="http://matthew.wagerfield.com/parallax/">Parallax</a></h2>
+    </section>
+    <section class="slide">
+        <h2>Счётчик обратного отсчёта</h2>
+        <h2 class="shout next"><a href="http://matthew.wagerfield.com/parallax/">Countdown</a></h2>
+    </section>
+    <section class="slide">
+        <h2>Попапы, модалки, тултипы</h2>
+        <h2 class="shout next"><a href="http://dimsemenov.com/plugins/magnific-popup/">Magnific Popup</a></h2>
+    </section>
+    <section class="slide">
+        <h2>Анимации</h2>
+        <h2 class="shout next"><a href="https://daneden.github.io/animate.css/">Animate.css</a></h2>
+    </section>
+    <section class="slide white">
+        <img src="pictures/cats.jpg" alt="" class="cover cat" style="width: 100%;height: 100%;object-fit: cover;">
+        <img src="pictures/jquery-slogan.png" alt="" class="cover next" style="padding: 10%;background-color: rgba(255,255,255,.2);">
     </section>
     <!-- добавить слайд про $.extend -->
     <!-- добавить слайд про более подробную обработку событий (документа (все записи ready, разница между load и ready), браузера (ресайз, скролл), форм, клавиатуры, мышки) -->
